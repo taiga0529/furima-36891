@@ -41,11 +41,11 @@ addressesテーブル
 | address                   | string   | null: false |  
 | building_name             | string   |  
 | telephone_number          | string   | null: false | 
-| purchase_histories          | references  | null: false ,foreign_key: true |
+| purchase_history          | references  | null: false ,foreign_key: true |
 
 Association
 
-- has_one :purchase_histories
+- belongs_to :purchase_histories
 
 purchase_historiesテーブル
 
@@ -55,5 +55,5 @@ purchase_historiesテーブル
 Association
 
 - belongs_to :user
-- has_one :addresses
-- has_one :item
+- has_one :address
+- belongs_to :item
