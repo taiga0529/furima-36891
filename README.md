@@ -2,7 +2,7 @@
 
 usersテーブル
 
-| email                 | string | null: false |  
+| email                 | string | null: false ,unique:true|  
 | name                  | string | null: false |  
 | encrypted_password    | string | null: false |  
 | first_name            | string | null: false |  
@@ -15,15 +15,15 @@ Association
 
 - has_many :items
 - has_many :shipping_information
+- has_many :purchase_history
 
 itemsテーブル
 
 | name                | string      | null: false |  
-| price               | string      | null: false |  
-| image               | string      | null: false |  
-| explanation         | string      | null: false |  
-| category            | string      | null: false |  
-| status              | string      | null: false | 
+| price               | integer     | null: false |   
+| explanation_id         | integer      | null: false |  
+| category_id            | integer      | null: false |  
+| status_id              | integer      | null: false | 
 | user                | references  | null: false ,foreign_key: true |  
 
 Association
@@ -39,6 +39,17 @@ shipping_informationテーブル
 | building_name             | string   | null: false |  
 | telephone_number          | string   | null: false | 
 | shipping_address          | string   | null: false |  
+| burden                    | string   | null: false |  
+| area                      | string   | null: false | 
+| days                      | date     | null: false |  
+| user                      | references  | null: false ,foreign_key: true |
+
+Association
+
+- belongs_to :users
+
+purchase_historyテーブル
+
 | burden                    | string   | null: false |  
 | area                      | string   | null: false | 
 | days                      | date     | null: false |  
