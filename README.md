@@ -31,7 +31,7 @@ itemsテーブル
 Association
 
 - belongs_to :user
-- has_one :purchase_histories
+- has_one :purchase_history
 
 addressesテーブル
 
@@ -45,7 +45,7 @@ addressesテーブル
 
 Association
 
-- belongs_to :purchase_histories
+- belongs_to :purchase_history
 
 purchase_historiesテーブル
 
