@@ -20,10 +20,12 @@ Association
 itemsテーブル
 
 | name                | string      | null: false |  
-| price               | integer     | null: false |   
-| explanation_id         | integer      | null: false |  
+| price               | integer     | null: false 
+| explanation         | text      | null: false |  
 | category_id            | integer      | null: false |  
 | status_id              | integer      | null: false | 
+
+
 | user                | references  | null: false ,foreign_key: true |  
 
 Association
@@ -38,10 +40,6 @@ shipping_informationテーブル
 | address                   | string   | null: false |  
 | building_name             | string   | null: false |  
 | telephone_number          | string   | null: false | 
-| shipping_address          | string   | null: false |  
-| burden                    | string   | null: false |  
-| area                      | string   | null: false | 
-| days                      | date     | null: false |  
 | user                      | references  | null: false ,foreign_key: true |
 
 Association
@@ -50,10 +48,11 @@ Association
 
 purchase_historyテーブル
 
-| burden                    | string   | null: false |  
-| area                      | string   | null: false | 
-| days                      | date     | null: false |  
+| burden_id                    | integer   | null: false |  
+| area_id                      | integer   | null: false | 
+| days_id                      | integer   | null: false |  
 | user                      | references  | null: false ,foreign_key: true |
+| item                      | references  | null: false ,foreign_key: true |
 
 Association
 
