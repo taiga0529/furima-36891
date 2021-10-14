@@ -85,11 +85,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
-      it 'passwordが英語のみでは登録できない' do
-        @user.password = 'aaaaaa'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
-      end
       it 'メールアドレスに@を含まない場合は登録できない' do
         @user.email = 'aaaaaa'
         @user.valid?
