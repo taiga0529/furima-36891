@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+  has_one_attached :image
+  belongs_to :user
+
   validates :name, presence: true
   validates :price, presence: true
   validates :explanation, presence: true
@@ -8,5 +11,4 @@ class Item < ApplicationRecord
   validates :area_id, presence: true
   validates :days_id, presence: true
   validates :user_id, presence: true
-  belongs_to :user
 end
