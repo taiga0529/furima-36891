@@ -9,8 +9,8 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
-                    format: { with: /\A[0-9]+\z/ }
+  validates :image, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :explanation, presence: true
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :status_id, numericality: { other_than: 1, message: "can't be blank" }
