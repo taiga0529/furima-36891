@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   def index
     #@items = Item.includes(:user).order("created_at DESC")
     @items = Item.order('created_at DESC')
+    # @item=Item.find(params[:id])
   end
 
   def new
@@ -31,8 +32,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
-  end
+    redirect_to root_path if @item.purchase_history.present?
+  #トップページへ戻す if 商品が売れていたら
+end
 
   def update
     if @item.update(items_params)

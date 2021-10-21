@@ -39,7 +39,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it '出品者が空では購入できない' do
         @purchase_address.purchase_history_id = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Purchase history can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Purchase history is not a number")
       end
       it '郵便番号が3桁ハイフン4桁の半角文字列以外では購入できない' do
         @purchase_address.postcode = '１１１１−１１１'
@@ -50,6 +50,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.telephone_number = '０８０−１２３４−５６７８'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid")
+      end
+      it "tokenが空では登録できないこと" do
+        @purchase_address.token = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
   end
  end

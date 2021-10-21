@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def index
     @purchase_address = PurchaseAddress.new
-    @items=Item.find(params[:item_id])
+    @item=Item.find(params[:item_id])
   end
 
   def new
