@@ -36,11 +36,6 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Area can't be blank")
       end
-      it '出品者が空では購入できない' do
-        @purchase_address.purchase_history_id = ''
-        @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Purchase history is not a number")
-      end
       it '郵便番号が3桁ハイフン4桁の半角文字列以外では購入できない' do
         @purchase_address.postcode = '１１１１−１１１'
         @purchase_address.valid?
