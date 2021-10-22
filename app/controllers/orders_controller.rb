@@ -22,7 +22,7 @@ end
   private
 
   def set_furima
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 
   def purchase_params
@@ -30,7 +30,6 @@ end
   end
 
   def prevent_url
-    @item = Item.find(params[:item_id])
     if @item.user_id == current_user.id || @item.purchase_history != nil
       redirect_to root_path
     end
