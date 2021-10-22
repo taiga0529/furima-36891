@@ -4,15 +4,11 @@ class OrdersController < ApplicationController
   before_action :prevent_url, only: [:index]
 
   def index
-    @item=Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
   end
 
-  def new
-  end
 
   def create
-    @item=Item.find(params[:item_id])
     @purchase_address=PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
@@ -41,7 +37,7 @@ end
   end
 
   def pay_item
-  Payjp.api_key = "sk_test_87bfbe47dec14d3d63b05d2f"  
+  Payjp.api_key =  ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount:@item.price,  
         card: purchase_params[:token],    

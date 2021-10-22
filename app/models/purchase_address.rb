@@ -4,14 +4,12 @@ class PurchaseAddress
   validates :postcode, presence: true
   validates :postcode,format: { with: /\A\d{3}[-]\d{4}\z/}
   validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
-  validate :purchase_history_id
   validates :municipalities,presence: true
   validates :address, presence: true
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
-  validate :user_id
-  validate :item_id 
-  validate :building_name
+  validates :user_id, presence: true
+  validates :item_id , presence: true
   validates :token, presence: true
 
   def save
