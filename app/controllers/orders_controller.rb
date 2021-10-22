@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
+  before_action :set_furima, only: [:index, :create]
   before_action :authenticate_user!, only:[:index]
   before_action :prevent_url, only: [:index]
+
   def index
     @item=Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
@@ -22,6 +24,10 @@ class OrdersController < ApplicationController
 end
 
   private
+
+  def set_furima
+    @item = Item.find(params[:id])
+  end
 
   def purchase_params
     params.permit(:postcode, :area_id, :municipalities, :telephone_number, :building_name, :address).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
