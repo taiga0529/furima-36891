@@ -6,12 +6,12 @@ class PurchaseAddress
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
   with_options presence: true do
-     validates :user_id, presence: true
-     validates :item_id , presence: true
-     validates :token, presence: true
-     validates :municipalities,presence: true
-     validates :address, presence: true
-     validates :postcode, presence: true
+     validates :user_id
+     validates :item_id 
+     validates :token
+     validates :municipalities
+     validates :address
+     validates :postcode
   end
   def save
     purchase_histories = PurchaseHistory.create(item_id: item_id, user_id: user_id)
