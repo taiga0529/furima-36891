@@ -16,8 +16,8 @@ class OrdersController < ApplicationController
       redirect_to root_path 
     else
       render :index
+    end
   end
-end
 
   private
 
@@ -26,7 +26,7 @@ end
   end
 
   def purchase_params
-    params.permit(:postcode, :area_id, :municipalities, :telephone_number, :building_name, :address).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:purchase_address).permit(:postcode, :area_id, :municipalities, :telephone_number, :building_name, :address).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def prevent_url
